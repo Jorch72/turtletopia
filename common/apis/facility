@@ -1,0 +1,35 @@
+--[[
+Facility class implementation (stub).  Defines and implements the interface used to communicate with a facility as a unit.
+]]
+
+local Facility = {
+	requestFuel = function(self, fuelFacility, quantity)
+		--requests a quantity of fuel from another facility.
+	end
+	requestConstruction = function(self, )
+		--requests new construction
+	end
+	getBounds = function(self)
+		--retrieves the bounding coordinates of a facility.
+		return self.minBound, self.maxBound
+	end
+	getType = function(self)
+		--retrieves the type of facility
+		return self.facilityType
+	end
+}
+
+local fmetatable = {
+	__index = Facility
+}
+
+function new(f_type, minBound, maxBound, parent)
+	local f = {
+		facilityType = f_type
+		--minBound and maxBound should be vectors.
+		minBound = minBound
+		maxBound = maxBound
+	}
+	setmetatable(f, fmetatable)
+	return f
+end
